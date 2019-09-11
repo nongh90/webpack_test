@@ -7,6 +7,8 @@ export default class Greeter extends React.Component{
         return(
             <div className = {styles.root}>
                 {config.greetText}
+                <div>改了点东西</div>
+                <div>又改了点东西</div>
             </div>
         )
     }

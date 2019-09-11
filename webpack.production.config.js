@@ -1,10 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    devtool: 'eval-source-map',
+    mode: 'production',
+    devtool: 'null',
     entry: path.join(__dirname ,'app/main.js'),
     output: {
         path: path.join(__dirname , 'public'),
@@ -45,6 +46,8 @@ module.exports = {
         new webpack.BannerPlugin('版权所有，翻版必究'),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'index.tmp.html')
-        })
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new ExtractTextPlugin('style.css')
     ]
 }
